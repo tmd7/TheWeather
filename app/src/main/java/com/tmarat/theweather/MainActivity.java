@@ -12,7 +12,15 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity implements MainNavigator {
 
     private WeatherInfoFragment weatherInfoFragment;
-    private ListCitiesFragment listCitiesFragment;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //For example: download data from Server
+        //The method returned ArrayList<Data>
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +55,10 @@ public class MainActivity extends AppCompatActivity implements MainNavigator {
 
     @Override
     public void startListCitiesFragment() {
-        listCitiesFragment = new ListCitiesFragment();
         getFragmentManager()
                 .beginTransaction()
                 .remove(weatherInfoFragment)
-                .add(R.id.main_container, listCitiesFragment)
+                .add(R.id.main_container, new ListCitiesFragment())
                 .addToBackStack("")
                 .commit();
     }
