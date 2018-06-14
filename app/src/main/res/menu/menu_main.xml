@@ -6,8 +6,8 @@
     <item
         android:id="@+id/action_choose_city"
         android:orderInCategory="100"
-        android:title="Choose city"
-        app:showAsAction="never" />
+        android:title="CITIES"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_settings"

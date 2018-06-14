@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity implements MainNavigator {
         switch (item.getItemId()) {
             case R.id.action_choose_city:
                 startListCitiesFragment();
-        }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
