@@ -1,6 +1,9 @@
 package com.tmarat.theweather;
 
-public class Data {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Data implements Parcelable{
     private String cityName;
     private String temperature;
     private String humidity;
@@ -14,6 +17,40 @@ public class Data {
         this.press = press;
         this.wind = wind;
     }
+
+    protected Data(Parcel in) {
+        cityName = in.readString();
+        temperature = in.readString();
+        humidity = in.readString();
+        press = in.readString();
+        wind = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(cityName);
+        dest.writeString(temperature);
+        dest.writeString(humidity);
+        dest.writeString(press);
+        dest.writeString(wind);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Data> CREATOR = new Creator<Data>() {
+        @Override
+        public Data createFromParcel(Parcel in) {
+            return new Data(in);
+        }
+
+        @Override
+        public Data[] newArray(int size) {
+            return new Data[size];
+        }
+    };
 
     public String getCityName() {
         return cityName;
