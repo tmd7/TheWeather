@@ -1,19 +1,12 @@
 package com.tmarat.theweather;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainNavigator {
 
@@ -28,9 +21,9 @@ public class MainActivity extends AppCompatActivity implements MainNavigator {
         //For example: download data from Server
         //The method returned ArrayList<Data>
         dataList.clear();
-        dataList.add(0, new Data("Moscow", "30", "30", "768","10"));
-        dataList.add(1, new Data("London", "15", "50", "760","30"));
-        dataList.add(2, new Data("New York", "12", "60", "770","50"));
+        dataList.add(0, new Data("Moscow", "30", "30", "768", "10"));
+        dataList.add(1, new Data("London", "15", "50", "760", "30"));
+        dataList.add(2, new Data("New York", "12", "60", "770", "50"));
 
     }
 
@@ -48,13 +41,6 @@ public class MainActivity extends AppCompatActivity implements MainNavigator {
                 .commit();
 
     }
-
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//        outState.putParcelableArrayList("data", dataList);
-//        bundle = outState;
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
