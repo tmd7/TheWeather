@@ -23,14 +23,14 @@ public class ListCitiesFragment extends Fragment {
     }
 
     private void setRecyclerView(View view) {
-        view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
 
         // TODO: 14.06.2018
-//        recyclerView.setHasFixedSize(true);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
-//        recyclerView.setLayoutManager(layoutManager);
-//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getDataList());
-//        recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(getDataList());
+        recyclerView.setAdapter(adapter);
     }
 
     public static ListCitiesFragment init(ArrayList<Data> dataList) {

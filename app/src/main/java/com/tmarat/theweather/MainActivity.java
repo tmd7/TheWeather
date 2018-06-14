@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements MainNavigator {
         dataList.add(0, new Data("Moscow", "30", "30", "768", "10"));
         dataList.add(1, new Data("London", "15", "50", "760", "30"));
         dataList.add(2, new Data("New York", "12", "60", "770", "50"));
+        dataList.add(3, new Data("New York", "12", "60", "770", "50"));
 
     }
 
