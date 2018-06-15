@@ -12,7 +12,7 @@ import java.util.ArrayList;
 class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private ArrayList<Data> dataList;
 
-    public RecyclerViewAdapter(ArrayList<Data> dataList) {
+    RecyclerViewAdapter(ArrayList<Data> dataList) {
         this.dataList = dataList;
     }
 
@@ -34,11 +34,11 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
         return dataList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewNameCity;
         private TextView textViewTem;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             textViewNameCity = itemView.findViewById(R.id.item_city_name);
             textViewTem = itemView.findViewById(R.id.item_city_tem);

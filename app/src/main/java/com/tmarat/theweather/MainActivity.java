@@ -10,9 +10,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements MainNavigator {
 
-    private WeatherInfoFragment weatherInfoFragment;
     private ArrayList<Data> dataList = new ArrayList<>();
-
 
     @Override
     protected void onResume() {
@@ -32,13 +30,12 @@ public class MainActivity extends AppCompatActivity implements MainNavigator {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        weatherInfoFragment = new WeatherInfoFragment();
         getFragmentManager()
                 .beginTransaction()
-                .add(R.id.main_container, weatherInfoFragment)
+                .add(R.id.main_container, new WeatherInfoFragment())
                 .commit();
 
     }
