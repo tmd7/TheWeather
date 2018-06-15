@@ -24,8 +24,6 @@ public class ListCitiesFragment extends Fragment {
 
     private void setRecyclerView(View view) {
         recyclerView = view.findViewById(R.id.recycler_view);
-
-        // TODO: 14.06.2018
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
