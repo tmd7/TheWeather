@@ -66,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements MainNavigator {
     public void startListCitiesFragment() {
         getFragmentManager()
                 .beginTransaction()
-                .remove(weatherInfoFragment)
                 .replace(R.id.main_container, ListCitiesFragment.init(dataList))
                 .addToBackStack("")
                 .commit();
