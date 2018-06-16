@@ -11,9 +11,14 @@ import java.util.ArrayList;
 
 class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private ArrayList<Data> dataList;
+    private OnItemClickListener onItemClickListener;
 
     RecyclerViewAdapter(ArrayList<Data> dataList) {
         this.dataList = dataList;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -42,6 +47,19 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
             super(itemView);
             textViewNameCity = itemView.findViewById(R.id.item_city_name);
             textViewTem = itemView.findViewById(R.id.item_city_tem);
+
+            textViewNameCity.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemClick(v, getAdapterPosition());
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View v, int adapterPosition);
     }
 }

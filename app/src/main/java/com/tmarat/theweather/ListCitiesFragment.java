@@ -29,6 +29,16 @@ public class ListCitiesFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(getDataList());
         recyclerView.setAdapter(adapter);
+        setOnItemClickListener(adapter);
+    }
+
+    private void setOnItemClickListener(RecyclerViewAdapter adapter) {
+        adapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int adapterPosition) {
+                //Do something
+            }
+        });
     }
 
     public static ListCitiesFragment init(ArrayList<Data> dataList) {
