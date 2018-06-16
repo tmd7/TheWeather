@@ -1,7 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_light">
+    android:gravity="center"
+    android:orientation="vertical">
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/city_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20pt"
+        tools:text="Moscow" />
+
+    <TextView
+        android:id="@+id/tem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="30pt"
+        tools:text="30" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/label_hum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hum: "/>
+
+        <TextView
+            android:id="@+id/value_tem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="52"/>
+
+        <TextView
+            android:layout_marginLeft="8dp"
+            android:id="@+id/label_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Press: "/>
+
+        <TextView
+            android:id="@+id/value_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="52"/>
+
+        <TextView
+            android:layout_marginLeft="8dp"
+            android:id="@+id/label_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wind: "/>
+
+        <TextView
+            android:id="@+id/value_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="20"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
