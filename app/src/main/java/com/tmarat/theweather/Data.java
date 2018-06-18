@@ -60,6 +60,26 @@ public class Data implements Parcelable{
         return temperature;
     }
 
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
+    }
+
+    public void setPress(String press) {
+        this.press = press;
+    }
+
+    public void setWind(String wind) {
+        this.wind = wind;
+    }
+
     public String getHumidity() {
         return humidity;
     }

@@ -15,7 +15,7 @@ public class WeatherInfoFragment extends Fragment {
     private TextView press;
     private TextView wind;
 
-    public static WeatherInfoFragment init (Data data) {
+    public static WeatherInfoFragment init(Data data) {
         WeatherInfoFragment fragment = new WeatherInfoFragment();
         Bundle args = new Bundle();
         args.putParcelable("weatherInfo", data);
@@ -33,6 +33,10 @@ public class WeatherInfoFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_weather_info, container, false);
         setUI(view);
+        savedInstanceState = getFragmentManager().findFragmentById(R.id.main_container).getArguments();
+        if (savedInstanceState != null) {
+            setWeatherInfo(getData());
+        }
         return view;
     }
 
