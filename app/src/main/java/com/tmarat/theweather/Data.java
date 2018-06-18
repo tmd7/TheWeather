@@ -10,7 +10,7 @@ public class Data implements Parcelable{
     private String press;
     private String wind;
 
-    public Data(String cityName, String temperature, String humidity, String press, String wind) {
+    Data(String cityName, String temperature, String humidity, String press, String wind) {
         this.cityName = cityName;
         this.temperature = temperature;
         this.humidity = humidity;
@@ -18,7 +18,7 @@ public class Data implements Parcelable{
         this.wind = wind;
     }
 
-    protected Data(Parcel in) {
+    private Data(Parcel in) {
         cityName = in.readString();
         temperature = in.readString();
         humidity = in.readString();
