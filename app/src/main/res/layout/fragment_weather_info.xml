@@ -15,7 +15,7 @@
         tools:text="Moscow" />
 
     <TextView
-        android:id="@+id/tem"
+        android:id="@+id/value_tem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -35,7 +35,7 @@
             android:text="Hum: "/>
 
         <TextView
-            android:id="@+id/value_tem"
+            android:id="@+id/value_hum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="52"/>

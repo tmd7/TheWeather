@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements MainNavigator {
         getFragmentManager()
                 .beginTransaction()
                 .replace(R.id.main_container, ListCitiesFragment.init(dataList))
-                .addToBackStack("")
                 .commit();
     }
 }

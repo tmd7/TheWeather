@@ -14,6 +14,14 @@ import java.util.ArrayList;
 public class ListCitiesFragment extends Fragment {
     RecyclerView recyclerView;
 
+    public static ListCitiesFragment init(ArrayList<Data> dataList) {
+        ListCitiesFragment fragment = new ListCitiesFragment();
+        Bundle args = new Bundle();
+        args.putParcelableArrayList("data", dataList);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -29,24 +37,16 @@ public class ListCitiesFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(getDataList());
         recyclerView.setAdapter(adapter);
-        setOnItemClickListener(adapter);
-    }
 
-    private void setOnItemClickListener(RecyclerViewAdapter adapter) {
         adapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, int adapterPosition) {
-                //Do something
+            public void onItemClick(Data data) {
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.main_container, WeatherInfoFragment.init(data))
+                        .commit();
             }
         });
-    }
-
-    public static ListCitiesFragment init(ArrayList<Data> dataList) {
-        ListCitiesFragment fragment = new ListCitiesFragment();
-        Bundle args = new Bundle();
-        args.putParcelableArrayList("data", dataList);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     public ArrayList<Data> getDataList() {

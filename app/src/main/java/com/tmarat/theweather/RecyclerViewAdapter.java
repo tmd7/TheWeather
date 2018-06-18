@@ -52,7 +52,7 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
                 @Override
                 public void onClick(View v) {
                     if (onItemClickListener != null) {
-                        onItemClickListener.onItemClick(v, getAdapterPosition());
+                        onItemClickListener.onItemClick(dataList.get(getAdapterPosition()));
                     }
                 }
             });
@@ -60,6 +60,6 @@ class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewH
     }
 
     public interface OnItemClickListener {
-        void onItemClick(View v, int adapterPosition);
+        void onItemClick(Data data);
     }
 }
