@@ -3,6 +3,7 @@ package com.tmarat.theweather;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener, MainNavigator {
+
+  private Toolbar toolbar;
 
   private ArrayList<Data> dataList = new ArrayList<>();
 
@@ -34,22 +37,37 @@ public class MainActivity extends AppCompatActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Toolbar toolbar = findViewById(R.id.toolbar);
-    setSupportActionBar(toolbar);
 
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    setToolBar();
+    setDrawerNavigation();
+    addWeatherInfoFragment();
+  }
+
+  private void setToolBar() {
+    toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+  }
+
+  private void setDrawerNavigation() {
+    DrawerLayout drawer = findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
         this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
     drawer.addDrawerListener(toggle);
     toggle.syncState();
 
-    NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+    NavigationView navigationView = findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
+  }
 
+  private void addWeatherInfoFragment() {
     getFragmentManager()
         .beginTransaction()
         .add(R.id.main_container, new WeatherInfoFragment())
         .commit();
+  }
+
+  private void showSnackBar(int resId) {
+    Snackbar.make(toolbar, resId, Snackbar.LENGTH_SHORT).show();
   }
 
   @Override
@@ -80,7 +98,7 @@ public class MainActivity extends AppCompatActivity
 
   @Override
   public void onBackPressed() {
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    DrawerLayout drawer = findViewById(R.id.drawer_layout);
     if (drawer.isDrawerOpen(GravityCompat.START)) {
       drawer.closeDrawer(GravityCompat.START);
     } else {
@@ -94,6 +112,7 @@ public class MainActivity extends AppCompatActivity
 
     if (id == R.id.nav_ambient_weather) {
       //todo method
+      showSnackBar(R.string.hello);
     } else if (id == R.id.nav_gallery) {
 
     } else if (id == R.id.nav_slideshow) {
@@ -106,7 +125,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    DrawerLayout drawer = findViewById(R.id.drawer_layout);
     drawer.closeDrawer(GravityCompat.START);
     return true;
   }
