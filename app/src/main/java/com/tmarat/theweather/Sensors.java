@@ -25,11 +25,11 @@ public class Sensors {
     data = new Data();
     data.setCityName("Ambient weather");
     data.setWind("0");
-    initSensors();
+    checkSensor();
     registerSensorListener();
   }
 
-  public boolean initSensors() {
+  public boolean checkSensor() {
     sensorTem = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
     sensorHum = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
     sensorPress = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);

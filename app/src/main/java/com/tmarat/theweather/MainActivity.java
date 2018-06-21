@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity
     if (id == R.id.nav_ambient_weather) {
       sensors = new Sensors(getApplicationContext());
       Data data = sensors.getData();
-      if (sensors.initSensors()) {
+      if (sensors.checkSensor()) {
         startFragment(R.id.main_container, WeatherInfoFragment.init(data));
       } else {
         showSnackBar(R.string.sensor_error);
