@@ -7,5 +7,5 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
   <string name="ambient_weather">Ambient weather</string>
-  <string name="hello">Hello</string>
+  <string name="sensor_error">You don\'t have sensors</string>
 </resources>

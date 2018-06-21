@@ -1,5 +1,6 @@
 package com.tmarat.theweather;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -19,6 +20,14 @@ public class MainActivity extends AppCompatActivity
   private Toolbar toolbar;
 
   private ArrayList<Data> dataList = new ArrayList<>();
+  private Sensors sensors;
+
+  @Override protected void onPause() {
+    super.onPause();
+    if (sensors != null) {
+      sensors.unregisterSensorListener();
+    }
+  }
 
   @Override
   protected void onResume() {
@@ -40,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 
     setToolBar();
     setDrawerNavigation();
-    addWeatherInfoFragment();
+    startFragment(R.id.main_container, new WeatherInfoFragment());
   }
 
   private void setToolBar() {
@@ -57,13 +66,6 @@ public class MainActivity extends AppCompatActivity
 
     NavigationView navigationView = findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
-  }
-
-  private void addWeatherInfoFragment() {
-    getFragmentManager()
-        .beginTransaction()
-        .add(R.id.main_container, new WeatherInfoFragment())
-        .commit();
   }
 
   private void showSnackBar(int resId) {
@@ -96,6 +98,13 @@ public class MainActivity extends AppCompatActivity
         .commit();
   }
 
+  public void startFragment(int rId, Fragment fragment) {
+    getFragmentManager()
+        .beginTransaction()
+        .replace(rId, fragment)
+        .commit();
+  }
+
   @Override
   public void onBackPressed() {
     DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -111,8 +120,13 @@ public class MainActivity extends AppCompatActivity
     int id = item.getItemId();
 
     if (id == R.id.nav_ambient_weather) {
-      //todo method
-      showSnackBar(R.string.hello);
+      sensors = new Sensors(getApplicationContext());
+      Data data = sensors.getData();
+      if (sensors.initSensors()) {
+        startFragment(R.id.main_container, WeatherInfoFragment.init(data));
+      } else {
+        showSnackBar(R.string.sensor_error);
+      }
     } else if (id == R.id.nav_gallery) {
 
     } else if (id == R.id.nav_slideshow) {

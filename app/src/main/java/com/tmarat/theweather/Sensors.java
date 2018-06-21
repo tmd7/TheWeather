@@ -5,6 +5,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.util.Log;
 
 import static android.content.Context.SENSOR_SERVICE;
 
@@ -21,11 +22,11 @@ public class Sensors {
 
   public Sensors(Context context) {
     this.sensorManager = (SensorManager) context.getSystemService(SENSOR_SERVICE);
+    data = new Data();
     data.setCityName("Ambient");
     data.setWind("n/a");
     initSensors();
     registerSensorListener();
-    unregisterSensorListener();
   }
 
   public boolean initSensors() {
@@ -52,7 +53,7 @@ public class Sensors {
     sensorManager.registerListener(sensorListener, sensorPress, SensorManager.SENSOR_DELAY_NORMAL);
   }
 
-  private void unregisterSensorListener() {
+  public void unregisterSensorListener() {
     sensorManager.unregisterListener(sensorListener,sensorTem);
     sensorManager.unregisterListener(sensorListener,sensorHum);
     sensorManager.unregisterListener(sensorListener,sensorPress);
@@ -62,19 +63,18 @@ public class Sensors {
     @Override public void onSensorChanged(SensorEvent event) {
       switch (event.sensor.getType()) {
         case Sensor.TYPE_AMBIENT_TEMPERATURE:
+          Log.d("sensor", "tem");
           data.setTemperature(toString(event.values[0]));
           break;
 
         case Sensor.TYPE_RELATIVE_HUMIDITY:
+          Log.d("sensor", "hum");
           data.setHumidity(toString(event.values[0]));
           break;
 
         case Sensor.TYPE_PRESSURE:
+          Log.d("sensor", "press");
           data.setPress(toString(event.values[0]));
-          break;
-
-        default:
-          //something
           break;
       }
     }

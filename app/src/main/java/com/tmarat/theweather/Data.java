@@ -26,6 +26,10 @@ public class Data implements Parcelable {
     wind = in.readString();
   }
 
+  public Data() {
+
+  }
+
   @Override
   public void writeToParcel(Parcel dest, int flags) {
     dest.writeString(cityName);
