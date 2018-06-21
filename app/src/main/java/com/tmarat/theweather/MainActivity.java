@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
-    implements NavigationView.OnNavigationItemSelectedListener, MainNavigator {
+    implements NavigationView.OnNavigationItemSelectedListener {
 
   private Toolbar toolbar;
 
@@ -83,19 +83,11 @@ public class MainActivity extends AppCompatActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_choose_city:
-        startListCitiesFragment();
+        startFragment(R.id.main_container,ListCitiesFragment.init(dataList));
         return true;
       default:
         return super.onOptionsItemSelected(item);
     }
-  }
-
-  @Override
-  public void startListCitiesFragment() {
-    getFragmentManager()
-        .beginTransaction()
-        .replace(R.id.main_container, ListCitiesFragment.init(dataList))
-        .commit();
   }
 
   public void startFragment(int rId, Fragment fragment) {

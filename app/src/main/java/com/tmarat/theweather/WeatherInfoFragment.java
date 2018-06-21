@@ -54,6 +54,6 @@ public class WeatherInfoFragment extends Fragment {
     tem.setText(data.getTemperature());
     hum.setText(data.getHumidity());
     press.setText(data.getPress());
-    wind.setText(data.getPress());
+    wind.setText(data.getWind());
   }
 }
