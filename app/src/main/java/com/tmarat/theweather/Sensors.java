@@ -23,25 +23,25 @@ public class Sensors {
   public Sensors(Context context) {
     this.sensorManager = (SensorManager) context.getSystemService(SENSOR_SERVICE);
     data = new Data();
-    data.setCityName("Ambient");
-    data.setWind("n/a");
-    initSensors();
+    data.setCityName("Ambient weather");
+    data.setWind("0");
+    checkSensor();
     registerSensorListener();
   }
 
-  public boolean initSensors() {
+  public boolean checkSensor() {
     sensorTem = sensorManager.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE);
     sensorHum = sensorManager.getDefaultSensor(Sensor.TYPE_RELATIVE_HUMIDITY);
     sensorPress = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
 
     if (sensorTem == null) {
-      data.setTemperature("n/a");
+      data.setTemperature("0");
     }
     if (sensorHum == null) {
-      data.setHumidity("n/a");
+      data.setHumidity("0");
     }
     if (sensorPress == null) {
-      data.setPress("n/a");
+      data.setPress("0");
     }
 
     return sensorTem != null || sensorHum != null || sensorPress != null;
