@@ -72,6 +72,13 @@ public class MainActivity extends AppCompatActivity
     Snackbar.make(toolbar, resId, Snackbar.LENGTH_SHORT).show();
   }
 
+  public void startFragment(int rId, Fragment fragment) {
+    getFragmentManager()
+        .beginTransaction()
+        .replace(rId, fragment)
+        .commit();
+  }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -88,13 +95,6 @@ public class MainActivity extends AppCompatActivity
       default:
         return super.onOptionsItemSelected(item);
     }
-  }
-
-  public void startFragment(int rId, Fragment fragment) {
-    getFragmentManager()
-        .beginTransaction()
-        .replace(rId, fragment)
-        .commit();
   }
 
   @Override

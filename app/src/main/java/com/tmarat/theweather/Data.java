@@ -26,8 +26,7 @@ public class Data implements Parcelable {
     wind = in.readString();
   }
 
-  public Data() {
-
+  Data() {
   }
 
   @Override

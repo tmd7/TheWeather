@@ -20,7 +20,7 @@ public class Sensors {
     return data;
   }
 
-  public Sensors(Context context) {
+  Sensors(Context context) {
     this.sensorManager = (SensorManager) context.getSystemService(SENSOR_SERVICE);
     data = new Data();
     data.setCityName("Ambient weather");
