@@ -1,4 +1,4 @@
-package com.tmarat.theweather;
+package com.tmarat.theweather.common;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -16,7 +16,7 @@ public class Settings {
   private Boolean isCheckedPress;
   private Boolean isCheckedWind;
 
-  Settings(Context context) {
+  public Settings(Context context) {
     preferences = context.getSharedPreferences(MAIN_CONFIG, Context.MODE_PRIVATE);
     this.isCheckedHum = preferences.getBoolean(HUM, false);
     this.isCheckedPress = preferences.getBoolean(PRESS, false);

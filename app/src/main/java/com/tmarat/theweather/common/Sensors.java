@@ -1,4 +1,4 @@
-package com.tmarat.theweather;
+package com.tmarat.theweather.common;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
+import com.tmarat.theweather.data.Data;
 
 import static android.content.Context.SENSOR_SERVICE;
 
@@ -20,7 +21,7 @@ public class Sensors {
     return data;
   }
 
-  Sensors(Context context) {
+  public Sensors(Context context) {
     this.sensorManager = (SensorManager) context.getSystemService(SENSOR_SERVICE);
     data = new Data();
     data.setCityName("Ambient weather");

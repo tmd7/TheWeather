@@ -12,6 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.tmarat.theweather.common.Sensors;
+import com.tmarat.theweather.data.Data;
+import com.tmarat.theweather.ui.ListCitiesFragment;
+import com.tmarat.theweather.ui.SettingsFragment;
+import com.tmarat.theweather.ui.WeatherInfoFragment;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
