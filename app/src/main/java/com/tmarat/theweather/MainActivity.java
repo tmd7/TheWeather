@@ -79,6 +79,14 @@ public class MainActivity extends AppCompatActivity
         .commit();
   }
 
+  public void startFragmentInBackStack(int rId, Fragment fragment) {
+    getFragmentManager()
+        .beginTransaction()
+        .replace(rId, fragment)
+        .addToBackStack("")
+        .commit();
+  }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -90,8 +98,11 @@ public class MainActivity extends AppCompatActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_choose_city:
-        startFragment(R.id.main_container,ListCitiesFragment.init(dataList));
+        startFragment(R.id.main_container, ListCitiesFragment.init(dataList));
         return true;
+
+      case R.id.action_settings:
+        startFragmentInBackStack(R.id.main_container, new SettingsFragment());
       default:
         return super.onOptionsItemSelected(item);
     }
