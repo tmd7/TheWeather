@@ -18,6 +18,8 @@ public class WeatherInfoFragment extends Fragment {
   private TextView press;
   private TextView wind;
 
+  private Settings settings;
+
   public static WeatherInfoFragment init(Data data) {
     WeatherInfoFragment fragment = new WeatherInfoFragment();
     Bundle args = new Bundle();
@@ -34,8 +36,8 @@ public class WeatherInfoFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
       Bundle savedInstanceState) {
-
     View view = inflater.inflate(R.layout.fragment_weather_info, container, false);
+    settings = new Settings(view.getContext());
     setUI(view);
     savedInstanceState = getFragmentManager().findFragmentById(R.id.main_container).getArguments();
     if (savedInstanceState != null) {
