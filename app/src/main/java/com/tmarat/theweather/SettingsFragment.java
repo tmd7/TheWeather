@@ -1,8 +1,6 @@
 package com.tmarat.theweather;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,26 +11,17 @@ import android.widget.CheckBox;
 
 public class SettingsFragment extends Fragment {
 
-  private static final String MAIN_CONFIG = "mainConfig";
-  public static final String HUM = "hum";
-  public static final String PRESS = "press";
-  public static final String WIND = "wind";
-
   private CheckBox hum;
   private CheckBox press;
   private CheckBox wind;
 
-  private SharedPreferences preferences;
-
-  public SettingsFragment() {
-    this.preferences = getContext().getSharedPreferences(MAIN_CONFIG, Context.MODE_PRIVATE);
-  }
+  private Settings settings;
 
   @Nullable @Override
   public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
       @Nullable Bundle savedInstanceState) {
-
     View view = inflater.inflate(R.layout.fragment_settings, container, false);
+    settings = new Settings(view.getContext());
     setUI(view);
     loadPreferences();
     setButtonOnClickListener(view);
@@ -46,20 +35,17 @@ public class SettingsFragment extends Fragment {
   }
 
   private void loadPreferences() {
-    if (preferences != null) {
-     hum.setChecked(preferences.getBoolean(HUM, false));
-     press.setChecked(preferences.getBoolean(PRESS, false));
-     wind.setChecked(preferences.getBoolean(WIND, false));
+    if (settings.getPreferences() != null) {
+      hum.setChecked(settings.getCheckedHum());
+      press.setChecked(settings.getCheckedPress());
+      wind.setChecked(settings.getCheckedWind());
     }
   }
 
   private void savePreferences() {
-    preferences = getContext().getSharedPreferences(MAIN_CONFIG, Context.MODE_PRIVATE);
-    SharedPreferences.Editor editor = preferences.edit();
-    editor.putBoolean(HUM, hum.isChecked());
-    editor.putBoolean(PRESS, press.isChecked());
-    editor.putBoolean(WIND, wind.isChecked());
-    editor.apply();
+    settings.setCheckedHum(hum.isChecked());
+    settings.setCheckedPress(press.isChecked());
+    settings.setCheckedWind(wind.isChecked());
   }
 
   private void setButtonOnClickListener(View view) {
