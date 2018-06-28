@@ -1,17 +1,18 @@
 package com.tmarat.theweather;
 
 import android.app.Fragment;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class WeatherInfoFragment extends Fragment {
+  private TextView labelHum;
+  private TextView labelPress;
+  private TextView labelWind;
+
   private TextView cityName;
   private TextView tem;
   private TextView hum;
@@ -47,11 +48,45 @@ public class WeatherInfoFragment extends Fragment {
   }
 
   private void setUI(View view) {
+    labelHum = view.findViewById(R.id.label_hum);
+    labelPress = view.findViewById(R.id.label_press);
+    labelWind = view.findViewById(R.id.label_wind);
+
     cityName = view.findViewById(R.id.city_name);
     tem = view.findViewById(R.id.value_tem);
     hum = view.findViewById(R.id.value_hum);
     press = view.findViewById(R.id.value_press);
     wind = view.findViewById(R.id.value_wind);
+
+    checkSettings();
+  }
+
+  private void checkSettings() {
+    if (settings.getPreferences() != null) {
+      if (settings.getCheckedHum()) {
+        labelHum.setVisibility(View.VISIBLE);
+        hum.setVisibility(View.VISIBLE);
+      } else {
+        labelHum.setVisibility(View.GONE);
+        hum.setVisibility(View.GONE);
+      }
+
+      if (settings.getCheckedPress()) {
+        labelPress.setVisibility(View.VISIBLE);
+        press.setVisibility(View.VISIBLE);
+      } else {
+        labelPress.setVisibility(View.GONE);
+        press.setVisibility(View.GONE);
+      }
+
+      if (settings.getCheckedWind()) {
+        labelWind.setVisibility(View.VISIBLE);
+        wind.setVisibility(View.VISIBLE);
+      } else {
+        labelWind.setVisibility(View.GONE);
+        wind.setVisibility(View.GONE);
+      }
+    }
   }
 
   public void setWeatherInfo(Data data) {

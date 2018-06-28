@@ -16,7 +16,7 @@ public class Settings {
   private Boolean isCheckedPress;
   private Boolean isCheckedWind;
 
-  public Settings(Context context) {
+  Settings(Context context) {
     preferences = context.getSharedPreferences(MAIN_CONFIG, Context.MODE_PRIVATE);
     this.isCheckedHum = preferences.getBoolean(HUM, false);
     this.isCheckedPress = preferences.getBoolean(PRESS, false);
@@ -58,14 +58,5 @@ public class Settings {
 
   public SharedPreferences getPreferences() {
     return preferences;
-  }
-
-  public Boolean[] getSettingsArray() {
-    Boolean[] arraySettings = new Boolean[2];
-    arraySettings[0] = getCheckedHum();
-    arraySettings[1] = getCheckedPress();
-    arraySettings[2] = getCheckedWind();
-
-    return arraySettings;
   }
 }
