@@ -1,4 +1,4 @@
-package com.tmarat.theweather;
+package com.tmarat.theweather.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,7 +10,7 @@ public class Data implements Parcelable {
   private String press;
   private String wind;
 
-  Data(String cityName, String temperature, String humidity, String press, String wind) {
+  public Data(String cityName, String temperature, String humidity, String press, String wind) {
     this.cityName = cityName;
     this.temperature = temperature;
     this.humidity = humidity;
@@ -26,7 +26,7 @@ public class Data implements Parcelable {
     wind = in.readString();
   }
 
-  Data() {
+  public Data() {
   }
 
   @Override

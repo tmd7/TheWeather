@@ -12,6 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.tmarat.theweather.common.Sensors;
+import com.tmarat.theweather.data.Data;
+import com.tmarat.theweather.ui.ListCitiesFragment;
+import com.tmarat.theweather.ui.SettingsFragment;
+import com.tmarat.theweather.ui.WeatherInfoFragment;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
@@ -79,6 +84,14 @@ public class MainActivity extends AppCompatActivity
         .commit();
   }
 
+  public void startFragmentInBackStack(int rId, Fragment fragment) {
+    getFragmentManager()
+        .beginTransaction()
+        .replace(rId, fragment)
+        .addToBackStack("")
+        .commit();
+  }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
@@ -90,8 +103,11 @@ public class MainActivity extends AppCompatActivity
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_choose_city:
-        startFragment(R.id.main_container,ListCitiesFragment.init(dataList));
+        startFragment(R.id.main_container, ListCitiesFragment.init(dataList));
         return true;
+
+      case R.id.action_settings:
+        startFragmentInBackStack(R.id.main_container, new SettingsFragment());
       default:
         return super.onOptionsItemSelected(item);
     }

@@ -1,4 +1,4 @@
-package com.tmarat.theweather;
+package com.tmarat.theweather.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.tmarat.theweather.R;
+import com.tmarat.theweather.data.Data;
 import java.util.ArrayList;
 
-class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
   private ArrayList<Data> dataList;
   private OnItemClickListener onItemClickListener;
 
-  RecyclerViewAdapter(ArrayList<Data> dataList) {
+  public RecyclerViewAdapter(ArrayList<Data> dataList) {
     this.dataList = dataList;
   }
 
