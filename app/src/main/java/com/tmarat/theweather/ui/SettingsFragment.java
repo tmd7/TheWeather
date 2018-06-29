@@ -41,6 +41,8 @@ public class SettingsFragment extends Fragment {
       hum.setChecked(settings.getCheckedHum());
       press.setChecked(settings.getCheckedPress());
       wind.setChecked(settings.getCheckedWind());
+    } else {
+      savePreferences();
     }
   }
 
